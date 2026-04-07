@@ -19,6 +19,7 @@ scroll-behavior:smooth;
 body{
 color:white;
 text-align:center;
+background:#f7f2ed;
 }
 
 /* PORTADA */
@@ -30,60 +31,88 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background-attachment:fixed;
 }
 
 .hero h1{
 font-size:60px;
-background:rgba(0,0,0,0.45);
+background:rgba(0,0,0,0.4);
 padding:20px 40px;
 border-radius:15px;
 }
 
-.scroll{
-margin-top:40px;
-font-size:20px;
-animation:down 2s infinite;
+/* CONTADOR */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:20px;
+background:#fff;
+color:#5c3b2e;
+padding:25px;
+font-size:22px;
+font-weight:bold;
 }
 
-@keyframes down{
-0%{transform:translateY(0);}
-50%{transform:translateY(15px);}
-100%{transform:translateY(0);}
+.box{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.2);
 }
 
-/* DETALLES */
+/* FOTO PEQUEÑA */
+
+.section-photo{
+
+display:flex;
+justify-content:center;
+padding:40px;
+}
+
+.photo-card{
+
+background:white;
+padding:15px;
+border-radius:20px;
+box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+width:80%;
+
+}
+
+.photo-card img{
+
+width:100%;
+border-radius:15px;
+
+}
+
+/* INFO EVENTO */
 
 .details{
-height:100vh;
-background:url("foto2.jpg") center/cover no-repeat;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background-attachment:fixed;
-}
 
-.card{
-background:rgba(0,0,0,0.6);
+color:#5c3b2e;
 padding:40px;
-border-radius:25px;
-max-width:400px;
+
 }
 
-.card h2{
-font-size:35px;
+.details h2{
+
+font-size:40px;
 margin-bottom:20px;
+
 }
 
-.card p{
+.details p{
+
 font-size:22px;
-margin:10px 0;
+margin:10px;
+
 }
 
 /* BOTONES */
 
 .btn{
+
 display:inline-block;
 margin:15px;
 padding:15px 30px;
@@ -92,21 +121,11 @@ color:white;
 text-decoration:none;
 border-radius:40px;
 font-weight:bold;
-transition:.3s;
-}
 
-.btn:hover{
-background:#b8962e;
-}
-
-/* CONTADOR */
-
-.countdown{
-font-size:26px;
-margin-top:20px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -125,17 +144,49 @@ margin-top:20px;
 Kevin & Lorena 💍
 </h1>
 
-<div class="scroll">
-Desliza hacia abajo ↓
+</section>
+
+<!-- CONTADOR -->
+
+<section class="countdown">
+
+<div class="box">
+<span id="dias"></span>
+<br>Días
+</div>
+
+<div class="box">
+<span id="horas"></span>
+<br>Horas
+</div>
+
+<div class="box">
+<span id="minutos"></span>
+<br>Minutos
+</div>
+
+<div class="box">
+<span id="segundos"></span>
+<br>Segundos
 </div>
 
 </section>
 
-<!-- DETALLES -->
+<!-- FOTO PEQUEÑA -->
+
+<section class="section-photo">
+
+<div class="photo-card">
+
+<img src="foto2.jpg">
+
+</div>
+
+</section>
+
+<!-- DETALLES EVENTO -->
 
 <section class="details">
-
-<div class="card">
 
 <h2>
 ¡Nos Casamos!
@@ -168,28 +219,35 @@ Confirmar asistencia 💬
 
 </a>
 
-<div class="countdown" id="countdown"></div>
-
-</div>
-
 </section>
 
 <script>
 
 var fecha="May 16, 2026 17:00:00";
 
-var x=setInterval(function(){
+setInterval(function(){
 
 var futuro=new Date(fecha).getTime();
 
 var ahora=new Date().getTime();
 
-var distancia=futuro-ahora;
+var diferencia=futuro-ahora;
 
-var dias=Math.floor(distancia/(1000*60*60*24));
+var dias=Math.floor(diferencia/(1000*60*60*24));
 
-document.getElementById("countdown").innerHTML=
-"Faltan "+dias+" días ❤️";
+var horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
+var minutos=Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+var segundos=Math.floor((diferencia%(1000*60))/1000);
+
+document.getElementById("dias").innerHTML=dias;
+
+document.getElementById("horas").innerHTML=horas;
+
+document.getElementById("minutos").innerHTML=minutos;
+
+document.getElementById("segundos").innerHTML=segundos;
 
 },1000);
 
