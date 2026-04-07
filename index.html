@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kevin & Lorena</title>
+<title>Kevin y Lorena</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,6 +15,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -24,169 +26,90 @@ text-align:center;
 /* PORTADA */
 
 .hero{
-
 height:100vh;
-
-background:url("foto1.jpg") center center no-repeat;
-
-background-size:cover;
-
+background:url("foto1.jpg") center/cover no-repeat;
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 }
 
 .hero h1{
-
-font-size:45px;
-
-background:rgba(0,0,0,.4);
-
+font-family:'Great Vibes',cursive;
+font-size:70px;
+background:rgba(0,0,0,0.4);
+padding:25px 50px;
+border-radius:20px;
 color:white;
-
-padding:15px 25px;
-
-border-radius:12px;
-
 }
 
 /* CONTADOR */
 
 .countdown{
-
 display:flex;
-
-flex-wrap:wrap;
-
 justify-content:center;
-
-gap:10px;
-
-padding:20px;
-
+gap:15px;
+background:white;
+padding:25px;
+color:#5c3b2e;
+font-weight:bold;
 }
 
 .box{
-
 background:white;
-
 padding:15px;
-
-width:80px;
-
-border-radius:12px;
-
-box-shadow:0px 3px 10px rgba(0,0,0,.2);
-
-color:#5c3b2e;
-
-font-size:18px;
-
+border-radius:10px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.2);
 }
 
-/* FOTO 2 */
+/* GALERIA DESLIZABLE */
 
-.section-photo{
-
-padding:20px;
-
+.gallery{
+overflow-x:auto;
+display:flex;
+gap:20px;
+padding:40px;
+scroll-snap-type:x mandatory;
 }
 
-.photo-card{
-
-background:white;
-
-padding:12px;
-
-border-radius:15px;
-
-box-shadow:0px 3px 10px rgba(0,0,0,.2);
-
-max-width:320px;
-
-margin:auto;
-
+.gallery img{
+height:300px;
+border-radius:20px;
+scroll-snap-align:center;
+box-shadow:0px 5px 20px rgba(0,0,0,0.2);
 }
 
-.photo-card img{
-
-width:100%;
-
-border-radius:12px;
-
-}
-
-/* INFO EVENTO */
+/* DETALLES EVENTO */
 
 .details{
-
-padding:25px;
-
 color:#5c3b2e;
-
+padding:30px;
 }
 
 .details h2{
-
-font-size:32px;
-
-margin-bottom:10px;
-
-}
-
-.details p{
-
-font-size:20px;
-
-margin:8px;
-
+font-size:40px;
+margin-bottom:20px;
 }
 
 /* BOTONES */
 
 .btn{
-
 display:inline-block;
-
-margin:10px;
-
-padding:14px 25px;
-
+margin:15px;
+padding:15px 30px;
 background:#d4af37;
-
 color:white;
-
 text-decoration:none;
-
 border-radius:40px;
-
 font-weight:bold;
-
 }
 
-/* BOTON MUSICA */
+/* TEXTO BIBLICO */
 
-.music-btn{
-
-position:fixed;
-
-bottom:20px;
-
-right:20px;
-
-background:#d4af37;
-
-color:white;
-
-padding:12px 18px;
-
-border-radius:40px;
-
-font-size:18px;
-
+.bible{
+padding:40px;
+font-style:italic;
+font-size:22px;
+color:#5c3b2e;
 }
 
 </style>
@@ -195,135 +118,101 @@ font-size:18px;
 
 <body>
 
-
-<!-- MUSICA (botón obligatorio en celular) -->
-
-<audio id="musica" loop>
-
+<audio autoplay loop>
 <source src="musica.mp3" type="audio/mpeg">
-
 </audio>
-
-<button class="music-btn" onclick="document.getElementById('musica').play()">
-
-🎵 Música
-
-</button>
-
 
 <!-- PORTADA -->
 
 <section class="hero">
 
 <h1>
-
-Kevin & Lorena 💍
-
+Kevin y Lorena
 </h1>
 
 </section>
-
 
 <!-- CONTADOR -->
 
 <section class="countdown">
 
 <div class="box">
-
 <span id="dias"></span>
-
 <br>Días
-
 </div>
 
 <div class="box">
-
 <span id="horas"></span>
-
 <br>Horas
-
 </div>
 
 <div class="box">
-
 <span id="minutos"></span>
-
 <br>Minutos
-
 </div>
 
 <div class="box">
-
 <span id="segundos"></span>
-
 <br>Segundos
-
 </div>
 
 </section>
 
+<!-- GALERIA -->
 
-<!-- FOTO -->
-
-<section class="section-photo">
-
-<div class="photo-card">
+<section class="gallery">
 
 <img src="foto2.jpg">
-
-</div>
+<img src="foto3.jpg">
+<img src="foto4.jpg">
 
 </section>
-
 
 <!-- DETALLES -->
 
 <section class="details">
 
 <h2>
-
 ¡Nos Casamos!
-
 </h2>
 
 <p>
-
 📅 16 Mayo 2026
-
 </p>
 
 <p>
-
 ⏰ 5:00 PM
-
 </p>
 
 <p>
-
 📍 Salón de Eventos
-
 </p>
 
 <a class="btn"
-
 href="https://maps.google.com"
-
 target="_blank">
 
-Ver ubicación 📍
+Ver ubicación
 
 </a>
 
 <a class="btn"
-
 href="https://wa.me/521XXXXXXXXXX">
 
-Confirmar asistencia 💬
+Confirmar asistencia
 
 </a>
 
 </section>
 
+<!-- TEXTO BIBLICO -->
+
+<section class="bible">
+
+“La cuerda triple no se rompe fácilmente.”  
+— Eclesiastés 4:12
+
+</section>
 
 <script>
 
@@ -332,32 +221,23 @@ var fecha="May 16, 2026 17:00:00";
 setInterval(function(){
 
 var futuro=new Date(fecha).getTime();
-
 var ahora=new Date().getTime();
 
 var diferencia=futuro-ahora;
 
 var dias=Math.floor(diferencia/(1000*60*60*24));
-
 var horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
-
 var minutos=Math.floor((diferencia%(1000*60*60))/(1000*60));
-
 var segundos=Math.floor((diferencia%(1000*60))/1000);
 
 document.getElementById("dias").innerHTML=dias;
-
 document.getElementById("horas").innerHTML=horas;
-
 document.getElementById("minutos").innerHTML=minutos;
-
 document.getElementById("segundos").innerHTML=segundos;
 
 },1000);
 
 </script>
 
-
 </body>
-
 </html>
