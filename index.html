@@ -11,16 +11,15 @@
 <style>
 
 body{
-
 margin:0;
 font-family:serif;
-
+text-align:center;
+background:#f8f4f1;
 }
 
 /* VIDEO INTRO */
 
 #introVideo{
-
 position:fixed;
 top:0;
 left:0;
@@ -29,39 +28,76 @@ height:100%;
 object-fit:cover;
 z-index:999;
 transition:opacity 2s ease;
-
 }
 
-/* CONTENIDO INVITACION */
+/* CONTENIDO PRINCIPAL */
 
 #contenido{
-
-display:none;
 opacity:0;
 transition:opacity 2s ease;
-text-align:center;
-
 }
 
 /* PORTADA */
 
 .portada{
-
 height:100vh;
 background:url("foto1.jpg") center/cover no-repeat;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 color:white;
-
 }
 
-h1{
-
+.portada h1{
 font-size:60px;
 font-style:italic;
+}
 
+.portada p{
+font-size:22px;
+}
+
+/* CONTADOR */
+
+#contador{
+font-size:28px;
+margin:40px;
+}
+
+/* GALERIA */
+
+.galeria{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding:20px;
+}
+
+.galeria img{
+width:250px;
+border-radius:20px;
+}
+
+/* BOTONES */
+
+.boton{
+display:inline-block;
+padding:15px 25px;
+margin:20px;
+background:#c9a86a;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-size:18px;
+}
+
+/* VERSICULO */
+
+.versiculo{
+margin:60px 20px;
+font-size:18px;
+font-style:italic;
 }
 
 </style>
@@ -73,17 +109,13 @@ font-style:italic;
 <!-- VIDEO INTRO -->
 
 <video autoplay muted playsinline id="introVideo">
-
 <source src="intro.mp4" type="video/mp4">
-
 </video>
 
 <!-- MUSICA -->
 
 <audio id="musica" loop>
-
 <source src="musica.mp3" type="audio/mp3">
-
 </audio>
 
 <!-- CONTENIDO -->
@@ -98,13 +130,57 @@ font-style:italic;
 
 </div>
 
+<!-- CONTADOR -->
+
+<div id="contador"></div>
+
+<!-- GALERIA DESLIZABLE -->
+
+<div class="galeria">
+
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+
+</div>
+
+<!-- BOTONES -->
+
+<a class="boton"
+href="https://maps.google.com"
+target="_blank">
+
+Ver ubicación
+
+</a>
+
+<a class="boton"
+href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Kevin%20y%20Lorena">
+
+Confirmar asistencia
+
+</a>
+
+<!-- VERSICULO -->
+
+<div class="versiculo">
+
+“Dos son mejor que uno, porque tienen una buena recompensa por su duro trabajo.”
+— Eclesiastés 4:9 (Traducción del Nuevo Mundo)
+
+</div>
+
 </div>
 
 <script>
 
+/* FADE VIDEO */
+
 var video=document.getElementById("introVideo");
 
 video.onended=function(){
+
+document.getElementById("contenido").style.opacity="1";
 
 video.style.opacity="0";
 
@@ -112,20 +188,40 @@ setTimeout(function(){
 
 video.style.display="none";
 
-var contenido=document.getElementById("contenido");
-
-contenido.style.display="block";
-
-contenido.style.opacity="1";
-
 document.getElementById("musica").play();
 
 },2000);
 
 };
 
+/* CONTADOR REGRESIVO */
+
+var fecha=new Date("May 16, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var ahora=new Date().getTime();
+
+var diferencia=fecha-ahora;
+
+var dias=Math.floor(diferencia/(1000*60*60*24));
+
+var horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
+var minutos=Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+var segundos=Math.floor((diferencia%(1000*60))/1000);
+
+document.getElementById("contador").innerHTML=
+
+dias+" días "+
+horas+" horas "+
+minutos+" minutos "+
+segundos+" segundos ";
+
+},1000);
+
 </script>
 
 </body>
-
 </html>
