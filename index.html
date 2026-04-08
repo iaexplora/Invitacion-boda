@@ -1,64 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kevin y Lorena</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
 
 <style>
 
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
 scroll-behavior:smooth;
+font-family:'Segoe UI',sans-serif;
+
 }
 
 body{
+
 background:#f7f2ed;
 text-align:center;
+
 }
 
-/* MUSICA BOTON */
+/* BOTON MUSICA */
 
 .music-btn{
+
 position:fixed;
 bottom:20px;
 right:20px;
+
 background:#d4af37;
+
 border:none;
+
 color:white;
+
 padding:15px 20px;
+
 border-radius:40px;
+
 font-size:18px;
+
 cursor:pointer;
+
 box-shadow:0px 4px 10px rgba(0,0,0,0.3);
+
 }
 
 /* PORTADA */
 
 .hero{
+
 height:100vh;
+
 background:url("foto1.jpg") center/cover no-repeat;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 }
+
+/* NOMBRES */
 
 .nombres{
 
-font-family:'Great Vibes',cursive;
-font-size:80px;
+font-family:'Alex Brush',cursive;
+
+font-size:110px;
+
 color:white;
+
 background:rgba(0,0,0,0.35);
 
-padding:40px 60px;
+padding:40px 80px;
 
-border-radius:20px;
+border-radius:25px;
 
 display:flex;
 
@@ -66,93 +93,134 @@ flex-direction:column;
 
 align-items:center;
 
-line-height:1.2;
+line-height:1.1;
 
 }
+
+/* LETRA Y */
 
 .y{
 
-font-size:40px;
+font-size:55px;
 
-margin:5px 0;
+margin:10px 0;
 
-}
-font-family:'Great Vibes',cursive;
-font-size:70px;
-background:rgba(0,0,0,0.4);
-padding:25px 50px;
-border-radius:20px;
-color:white;
 }
 
 /* CONTADOR */
 
 .countdown{
+
 display:flex;
+
 justify-content:center;
+
 gap:15px;
+
 background:white;
+
 padding:25px;
+
 color:#5c3b2e;
+
 font-weight:bold;
+
 }
 
+/* CAJAS CONTADOR */
+
 .box{
+
 background:white;
+
 padding:15px;
+
 border-radius:10px;
+
 box-shadow:0px 4px 10px rgba(0,0,0,0.2);
+
 }
 
 /* GALERIA */
 
 .gallery{
+
 overflow-x:auto;
+
 display:flex;
+
 gap:20px;
+
 padding:40px;
+
 scroll-snap-type:x mandatory;
+
 }
 
 .gallery img{
+
 height:300px;
+
 border-radius:20px;
+
 scroll-snap-align:center;
+
 box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+
 }
 
 /* DETALLES */
 
 .details{
+
 color:#5c3b2e;
+
 padding:30px;
+
 }
 
 .details h2{
+
 font-size:40px;
+
 margin-bottom:20px;
+
 }
 
 /* BOTONES */
 
 .btn{
+
 display:inline-block;
+
 margin:15px;
+
 padding:15px 30px;
+
 background:#d4af37;
+
 color:white;
+
 text-decoration:none;
+
 border-radius:40px;
+
 font-weight:bold;
+
 }
 
 /* TEXTO BIBLICO */
 
 .bible{
+
 padding:40px;
+
 font-style:italic;
+
 font-size:22px;
+
 color:#5c3b2e;
+
 }
 
 </style>
@@ -162,10 +230,13 @@ color:#5c3b2e;
 <body>
 
 <audio id="musica" loop>
+
 <source src="musica.mp3" type="audio/mpeg">
+
 </audio>
 
 <button class="music-btn"
+
 onclick="document.getElementById('musica').play()">
 
 Activar música 🎵
@@ -193,23 +264,35 @@ Lorena
 <section class="countdown">
 
 <div class="box">
+
 <span id="dias"></span>
+
 <br>Días
+
 </div>
 
 <div class="box">
+
 <span id="horas"></span>
+
 <br>Horas
+
 </div>
 
 <div class="box">
+
 <span id="minutos"></span>
+
 <br>Minutos
+
 </div>
 
 <div class="box">
+
 <span id="segundos"></span>
+
 <br>Segundos
+
 </div>
 
 </section>
@@ -217,7 +300,9 @@ Lorena
 <section class="gallery">
 
 <img src="foto2.jpg">
+
 <img src="foto3.jpg">
+
 <img src="foto4.jpg">
 
 </section>
@@ -225,23 +310,33 @@ Lorena
 <section class="details">
 
 <h2>
+
 ¡Nos Casamos!
+
 </h2>
 
 <p>
+
 📅 16 Mayo 2026
+
 </p>
 
 <p>
+
 ⏰ 5:00 PM
+
 </p>
 
 <p>
+
 📍 Salón de Eventos
+
 </p>
 
 <a class="btn"
+
 href="https://maps.google.com"
+
 target="_blank">
 
 Ver ubicación
@@ -249,6 +344,7 @@ Ver ubicación
 </a>
 
 <a class="btn"
+
 href="https://wa.me/521XXXXXXXXXX">
 
 Confirmar asistencia
@@ -260,6 +356,7 @@ Confirmar asistencia
 <section class="bible">
 
 “La cuerda triple no se rompe fácilmente.”
+
 — Eclesiastés 4:12 (Traducción del Nuevo Mundo)
 
 </section>
@@ -271,18 +368,25 @@ var fecha="May 16, 2026 17:00:00";
 setInterval(function(){
 
 var futuro=new Date(fecha).getTime();
+
 var ahora=new Date().getTime();
 
 var diferencia=futuro-ahora;
 
 var dias=Math.floor(diferencia/(1000*60*60*24));
+
 var horas=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
 var minutos=Math.floor((diferencia%(1000*60*60))/(1000*60));
+
 var segundos=Math.floor((diferencia%(1000*60))/1000);
 
 document.getElementById("dias").innerHTML=dias;
+
 document.getElementById("horas").innerHTML=horas;
+
 document.getElementById("minutos").innerHTML=minutos;
+
 document.getElementById("segundos").innerHTML=segundos;
 
 },1000);
@@ -290,4 +394,5 @@ document.getElementById("segundos").innerHTML=segundos;
 </script>
 
 </body>
+
 </html>
