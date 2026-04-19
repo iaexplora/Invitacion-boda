@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kevin & Lorena</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+html,body{
+margin:0;
+padding:0;
+overflow-x:hidden;
+font-family:'Cormorant Garamond',serif;
+background:#f3f5ef;
+color:#3e4636;
+text-align:center;
+}
+
+
+/* SOBRE */
+
+#pantallaSobre{
+position:fixed;
+width:100%;
+height:100vh;
+background:#eef1e8;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:1s;
+}
+
+.sobre{
+width:320px;
+height:200px;
+background:#7c886d;
+position:relative;
+border-radius:6px;
+cursor:pointer;
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.tapa{
+position:absolute;
+width:100%;
+height:100%;
+background:#6f7b61;
+clip-path:polygon(0 0,50% 60%,100% 0);
+transform-origin:top;
+transition:1s;
+}
+
+.abierto .tapa{
+transform:rotateX(180deg);
+}
+
+.sello{
+position:absolute;
+width:65px;
+height:65px;
+background:#c6a462;
+border-radius:50%;
+top:65px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Great Vibes';
+font-size:26px;
+color:white;
+}
+
+.oculto{
+opacity:0;
+visibility:hidden;
+}
+
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:url("foto1.jpg") center center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+color:white;
+}
+
+.hero-overlay{
+text-align:center;
+}
+
+.nos-casamos{
+font-size:34px;
+letter-spacing:6px;
+margin-bottom:10px;
+font-weight:300;
+}
+
+.nombres{
+font-family:'Great Vibes';
+font-size:95px;
+line-height:1.05;
+margin:0;
+}
+
+.and{
+font-size:55px;
+display:block;
+}
+
+.fecha{
+font-size:26px;
+letter-spacing:4px;
+margin-top:15px;
+}
+
+
+/* FLORES LATERALES */
+
+.flor{
+position:absolute;
+font-size:40px;
+color:white;
+opacity:.9;
+}
+
+.flor-izq{
+left:30px;
+top:45%;
+}
+
+.flor-der{
+right:30px;
+top:45%;
+}
+
+
+/* TRIANGULO OLIVO */
+
+.triangulo{
+position:absolute;
+bottom:-1px;
+width:100%;
+height:150px;
+background:#7c886d;
+clip-path:polygon(0 100%,50% 0,100% 100%);
+}
+
+
+/* CONTADOR */
+
+.countdown{
+background:#7c886d;
+color:white;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+padding:40px 10px;
+font-size:26px;
+}
+
+
+/* GALERIA */
+
+.gallery{
+background:#eef1e8;
+padding:80px 20px;
+overflow-x:auto;
+display:flex;
+gap:35px;
+scroll-snap-type:x mandatory;
+}
+
+.foto-card{
+min-width:260px;
+height:320px;
+background:white;
+padding:10px;
+border-radius:12px;
+transform:rotate(-4deg);
+transition:.4s;
+box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+.foto-card:nth-child(even){
+transform:rotate(4deg);
+}
+
+.foto-card:hover{
+transform:scale(1.07) rotate(0deg);
+}
+
+.foto-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:10px;
+}
+
+.scroll-text{
+margin-top:20px;
+font-size:22px;
+font-style:italic;
+}
+
+
+/* SECCIONES */
+
+.section{
+padding:70px 25px;
+font-size:24px;
+}
+
+.section h2{
+font-size:40px;
+}
+
+
+/* BOTONES */
+
+.btn{
+display:block;
+margin:18px auto;
+padding:18px 40px;
+background:#7c886d;
+color:white;
+border-radius:40px;
+text-decoration:none;
+font-size:22px;
+width:80%;
+max-width:320px;
+}
+
+
+/* VESTIMENTA */
+
+.vestimenta{
+background:#eef1e8;
+}
+
+
+/* REGALOS */
+
+.regalos{
+background:#f8f8f3;
+}
+
+
+/* FINAL */
+
+.final{
+padding:50px;
+font-size:26px;
+font-style:italic;
+}
+
+
+/* BOTON MUSICA */
+
+.music-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#7c886d;
+color:white;
+font-size:28px;
+box-shadow:0 6px 20px rgba(0,0,0,.3);
+cursor:pointer;
+z-index:999;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<section id="pantallaSobre">
+
+<div class="sobre" onclick="abrirInvitacion()">
+
+<div class="tapa"></div>
+
+<div class="sello">K&L</div>
+
+</div>
+
+</section>
+
+
+<section class="hero">
+
+<div class="flor flor-izq">❀</div>
+<div class="flor flor-der">❀</div>
+
+<div class="hero-overlay">
+
+<p class="nos-casamos">
+
+Nos casamos
+
+</p>
+
+<h1 class="nombres">
+
+Kevin<br>
+
+<span class="and">Y</span><br>
+
+Lorena
+
+</h1>
+
+<p class="fecha">
+
+31 · Mayo · 2026
+
+</p>
+
+</div>
+
+<div class="triangulo"></div>
+
+</section>
+
+
+<section class="countdown">
+
+<div><div id="dias"></div>Días</div>
+<div><div id="horas"></div>Horas</div>
+<div><div id="minutos"></div>Minutos</div>
+<div><div id="segundos"></div>Segundos</div>
+
+</section>
+
+
+<section class="gallery">
+
+<div class="foto-card"><img src="foto2.jpg"></div>
+<div class="foto-card"><img src="foto3.jpg"></div>
+<div class="foto-card"><img src="foto4.jpg"></div>
+
+</section>
+
+<div class="scroll-text">
+
+Desliza para ver más fotos
+
+</div>
+
+
+<section class="section vestimenta">
+
+<h2>Código de vestimenta</h2>
+
+<p style="font-size:28px">
+
+Formal elegante
+
+</p>
+
+<p>
+
+Sugerimos traje oscuro o conjunto formal.
+
+Agradecemos evitar vestidos blancos o tonos similares reservados para la novia.
+
+</p>
+
+<p style="margin-top:25px;font-style:italic">
+
+Tu presencia hará aún más especial este día.
+
+</p>
+
+</section>
+
+
+<section class="section regalos">
+
+<h2>Tu compañía es nuestro mejor regalo</h2>
+
+<p>
+
+Lo más importante para nosotros es compartir este día contigo.
+
+Si deseas tener un detalle adicional puedes hacerlo mediante transferencia:
+
+</p>
+
+<p style="margin-top:20px;font-size:28px">
+
+CLABE: XXXXXXXX
+
+</p>
+
+</section>
+
+
+<section class="section">
+
+<h2>Ubicación del evento</h2>
+
+<a class="btn"
+href="https://maps.app.goo.gl/pKYXwLpwqGsDyGT86"
+target="_blank">
+
+Ubicación del discurso
+
+</a>
+
+<a class="btn"
+href="https://maps.app.goo.gl/hUytKE2CfJkosyjRA"
+target="_blank">
+
+Ubicación jardín de eventos
+
+</a>
+
+<a class="btn"
+href="https://wa.me/521XXXXXXXXXX">
+
+Confirmar asistencia
+
+</a>
+
+</section>
+
+
+<section class="final">
+
+“La cuerda triple no se rompe fácilmente.”
+
+Eclesiastés 4:12
+
+</section>
+
+
+<script>
+
+function abrirInvitacion(){
+
+document.querySelector(".sobre").classList.add("abierto");
+
+setTimeout(()=>{
+
+document.getElementById("pantallaSobre").classList.add("oculto");
+
+},1000);
+
+}
+
+
+var fecha="May 31, 2026 17:00:00";
+
+setInterval(function(){
+
+var futuro=new Date(fecha).getTime();
+var ahora=new Date().getTime();
+var diferencia=futuro-ahora;
+
+dias.innerHTML=Math.floor(diferencia/(1000*60*60*24));
+horas.innerHTML=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+minutos.innerHTML=Math.floor((diferencia%(1000*60*60))/(1000*60));
+segundos.innerHTML=Math.floor((diferencia%(1000*60))/1000);
+
+},1000);
+
+</script>
+
+</body>
+</html>
