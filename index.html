@@ -1,0 +1,304 @@
+# OPCIÓN 2 — SOBRE ULTRA PREMIUM (animación solapa real + tarjeta interna)
+
+Este es el estilo profesional real que usan invitaciones digitales de pago.
+
+Características:
+
+• aparece sobre elegante centrado
+• solapa superior se abre hacia arriba
+• tarjeta interna sale del sobre
+• transición cinematográfica suave
+• aparece tu foto detrás de los nombres
+• contador en cuadros individuales elegantes
+• botones verde olivo premium
+• incluye ubicaciones guardadas
+
+---
+
+CÓDIGO COMPLETO (index.html listo para copiar y pegar)
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin & Lorena</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant:wght@300&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--verde:#6f7f67;
+--texto:#3d4638;
+--fondo:#f4f4f1;
+}
+
+body{
+margin:0;
+font-family:'Cormorant',serif;
+background:var(--fondo);
+overflow-x:hidden;
+}
+
+/* ESCENA SOBRE */
+
+#scene{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:var(--fondo);
+perspective:1200px;
+}
+
+.envelope{
+position:relative;
+width:360px;
+height:230px;
+background:var(--verde);
+border-radius:6px;
+box-shadow:0 25px 60px rgba(0,0,0,.25);
+cursor:pointer;
+}
+
+/* SOLAPA SUPERIOR */
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:var(--verde);
+clip-path:polygon(0 0,100% 0,50% 55%);
+transform-origin:top;
+transition:1s ease;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+/* TARJETA INTERNA */
+
+.card{
+position:absolute;
+width:90%;
+height:85%;
+background:white;
+top:7%;
+left:5%;
+border-radius:4px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Italianno';
+font-size:48px;
+color:var(--texto);
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.envelope.open .card{
+transform:translateY(-260px);
+}
+
+/* CONTENIDO INVITACION */
+
+#contenido{
+display:none;
+}
+
+/* HERO FOTO */
+
+.hero{
+height:100vh;
+background:url("foto1.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.nombres{
+font-family:'Italianno';
+font-size:120px;
+color:white;
+text-shadow:0 8px 25px rgba(0,0,0,.45);
+}
+
+.y{
+font-size:60px;
+}
+
+/* CONTADOR PREMIUM */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:25px;
+padding:60px 20px;
+}
+
+.box{
+background:var(--verde);
+color:white;
+padding:22px;
+border-radius:10px;
+width:95px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.numero{
+font-size:34px;
+}
+
+/* BOTONES */
+
+.btn{
+display:inline-block;
+margin:12px;
+padding:15px 34px;
+background:var(--verde);
+color:white;
+text-decoration:none;
+border-radius:50px;
+letter-spacing:.5px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ESCENA SOBRE -->
+
+<section id="scene">
+
+<div class="envelope" onclick="abrirInvitacion()">
+
+<div class="flap"></div>
+
+<div class="card">
+K & L
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTENIDO REAL -->
+
+<section id="contenido">
+
+<section class="hero">
+
+<div class="nombres">
+Kevin
+
+<div class="y">
+y
+</div>
+
+Lorena
+
+</div>
+
+</section>
+
+<section class="countdown">
+
+<div class="box">
+<div id="dias" class="numero"></div>
+Días
+</div>
+
+<div class="box">
+<div id="horas" class="numero"></div>
+Horas
+</div>
+
+<div class="box">
+<div id="minutos" class="numero"></div>
+Minutos
+</div>
+
+<div class="box">
+<div id="segundos" class="numero"></div>
+Segundos
+</div>
+
+</section>
+
+<center>
+
+<a class="btn"
+href="https://maps.app.goo.gl/pKYXwLpwqGsDyGT86"
+target="_blank">
+Ubicación discurso
+</a>
+
+<a class="btn"
+href="https://maps.app.goo.gl/hUytKE2CfJkosyjRA"
+target="_blank">
+Ubicación jardín
+</a>
+
+</center>
+
+</section>
+
+<script>
+
+function abrirInvitacion(){
+
+const sobre=document.querySelector(".envelope");
+
+sobre.classList.add("open");
+
+setTimeout(()=>{
+
+scene.style.display="none";
+contenido.style.display="block";
+
+},1400);
+
+}
+
+/* CONTADOR */
+
+var fecha="May 31, 2026 17:00:00";
+
+setInterval(()=>{
+
+var futuro=new Date(fecha).getTime();
+
+var ahora=new Date().getTime();
+
+var diferencia=futuro-ahora;
+
+
+dias.innerHTML=Math.floor(diferencia/(1000*60*60*24));
+
+horas.innerHTML=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
+minutos.innerHTML=Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+segundos.innerHTML=Math.floor((diferencia%(1000*60))/1000);
+
+},1000);
+
+</script>
+
+</body>
+</html>
+```
