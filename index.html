@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kevin & Lorena</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Cormorant Garamond',serif;
+background:#f4f4ef;
+}
+
+/* SOBRE PANTALLA INICIAL */
+
+#pantallaSobre{
+
+position:fixed;
+
+width:100%;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#eef1e8;
+
+z-index:9999;
+
+transition:1.4s;
+
+}
+
+/* SOBRE REALISTA */
+
+.sobre{
+
+width:320px;
+
+height:200px;
+
+background:#7c8a6c;
+
+border-radius:6px;
+
+position:relative;
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+cursor:pointer;
+
+}
+
+/* tapa triangular real */
+
+.tapa{
+
+position:absolute;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:#6e7b5f;
+
+clip-path:polygon(0 0,50% 60%,100% 0);
+
+transform-origin:top;
+
+transition:1s;
+
+}
+
+/* sello central */
+
+.sello{
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:55px;
+
+height:55px;
+
+background:radial-gradient(circle,#c9a86b,#a88548);
+
+border-radius:50%;
+
+box-shadow:0 3px 10px rgba(0,0,0,.4);
+
+}
+
+/* abrir animación */
+
+.abierto .tapa{
+
+transform:rotateX(180deg);
+
+}
+
+/* desaparecer pantalla */
+
+.oculto{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+/* HERO FOTO */
+
+.hero{
+
+height:100vh;
+
+background:url("foto1.jpg") center/cover no-repeat;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+/* nombres centrados PERFECTO */
+
+.nombres{
+
+font-family:'Italianno',cursive;
+
+font-size:120px;
+
+color:white;
+
+text-shadow:0 6px 18px rgba(0,0,0,.5);
+
+}
+
+/* contador */
+
+.countdown{
+
+background:#7c8a6c;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+gap:40px;
+
+padding:40px;
+
+font-size:22px;
+
+}
+
+/* galería */
+
+.gallery{
+
+display:flex;
+
+overflow-x:auto;
+
+gap:20px;
+
+padding:40px;
+
+background:white;
+
+}
+
+.gallery img{
+
+height:300px;
+
+border-radius:14px;
+
+}
+
+/* botones elegantes */
+
+.btn{
+
+display:block;
+
+margin:14px auto;
+
+width:260px;
+
+padding:14px;
+
+background:#7c8a6c;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:30px;
+
+font-size:17px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+background:#5e6a51;
+
+}
+
+/* texto final */
+
+.final{
+
+padding:40px;
+
+text-align:center;
+
+font-style:italic;
+
+font-size:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SOBRE INICIAL -->
+
+<section id="pantallaSobre">
+
+<div class="sobre" onclick="abrirInvitacion()">
+
+<div class="tapa"></div>
+
+<div class="sello"></div>
+
+</div>
+
+</section>
+
+<!-- FOTO PRINCIPAL -->
+
+<section class="hero">
+
+<div class="nombres">
+
+Kevin y Lorena
+
+</div>
+
+</section>
+
+<!-- CONTADOR -->
+
+<section class="countdown">
+
+<div>
+
+<div id="dias"></div>
+
+Días
+
+</div>
+
+<div>
+
+<div id="horas"></div>
+
+Horas
+
+</div>
+
+<div>
+
+<div id="minutos"></div>
+
+Minutos
+
+</div>
+
+<div>
+
+<div id="segundos"></div>
+
+Segundos
+
+</div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section class="gallery">
+
+<img src="foto2.jpg">
+
+<img src="foto3.jpg">
+
+<img src="foto4.jpg">
+
+</section>
+
+<!-- BOTONES ESTILO REFERENCIA -->
+
+<section>
+
+<a class="btn"
+
+href="#">
+
+Ver invitación completa
+
+</a>
+
+<a class="btn"
+
+href="https://maps.app.goo.gl/pKYXwLpwqGsDyGT86"
+
+target="_blank">
+
+Horarios y ubicación
+
+</a>
+
+<a class="btn"
+
+href="https://wa.me/521XXXXXXXXXX">
+
+Confirmar asistencia
+
+</a>
+
+</section>
+
+<!-- TEXTO FINAL -->
+
+<section class="final">
+
+“La cuerda triple no se rompe fácilmente.”
+
+— Eclesiastés 4:12
+
+</section>
+
+<script>
+
+/* abrir sobre */
+
+function abrirInvitacion(){
+
+document.querySelector(".sobre").classList.add("abierto");
+
+setTimeout(()=>{
+
+document.getElementById("pantallaSobre").classList.add("oculto");
+
+},1000);
+
+}
+
+/* contador */
+
+var fecha="May 31, 2026 17:00:00";
+
+setInterval(function(){
+
+var futuro=new Date(fecha).getTime();
+
+var ahora=new Date().getTime();
+
+var diferencia=futuro-ahora;
+
+document.getElementById("dias").innerHTML=Math.floor(diferencia/(1000*60*60*24));
+
+document.getElementById("horas").innerHTML=Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutos").innerHTML=Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+document.getElementById("segundos").innerHTML=Math.floor((diferencia%(1000*60))/1000);
+
+},1000);
+
+</script>
+
+</body>
+
+</html>
